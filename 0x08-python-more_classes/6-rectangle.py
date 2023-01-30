@@ -13,10 +13,15 @@ class Rectangle:
     print() and str() should print the rectangle with the character #
     repr() should return a string representation of the rectangle
      to be able to recreate a new instance by using eval()
+    deconstructor method implemented 'Bye rectangle...'
+    Public class asttribute number_of_instances
     """
+
+    number_of_instances = 0
 
     def __init__(self, width=0, height=0):
         """ Constructor method """
+        Rectangle.number_of_instances += 1
         self.width = width
         self.height = height
 
@@ -73,3 +78,8 @@ class Rectangle:
     def __repr__(self):
         """ Return a string representation of the rectangle """
         return 'Rectangle({}, {})'.format(self.width, self.height)
+
+    def __del__(self):
+        """ Deconstructor method """
+        Rectangle.number_of_instances -= 1
+        print("Bye rectangle...")
